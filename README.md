@@ -1,7 +1,7 @@
 # NFL-Linkle
 ## Overview
 
-The NFL Player Connection Game is a web-based game, inspired by the popular Wordle concept. It challenges players to connect two NFL players through mutual teammates in six guesses or fewer. This project implements a full stack development approach, combining a Python backend with a React JSX frontend for an engaging user experience.
+The NFL Player Connection Game is a web-based game, inspired by the popular Wordle concept. It challenges players to connect two NFL players through mutual teammates in six guesses or fewer. This is a full stack development project, combining a Python backend with a React JSX frontend for an engaging user experience.
 
 ## Features
 
