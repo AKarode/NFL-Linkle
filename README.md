@@ -1,35 +1,42 @@
 # NFL-Linkle
-## Scraping 
-- We scraped our information from `profootballreference.com` 
-### Getting the table of active teams for the nfl for a given year
-- `https://www.pro-football-reference.com/teams/`
-- Stored in a table called 'Active franchises'
-- Html tag: 
+## Overview
+
+The NFL Player Connection Game is a web-based game, inspired by the popular Wordle concept. It challenges players to connect two NFL players through mutual teammates in six guesses or fewer. This project implements a full stack development approach, combining a Python backend with a React JSX frontend for an engaging user experience.
+
+## Features
+
+- **Interactive Gameplay**: Users engage in a challenge of linking two NFL players via mutual teammates, enhancing their knowledge of NFL player connections.
+- **Dynamic Data Processing**: Employed BeautifulSoup for efficient scraping of NFL data from profootballreference.com, transforming it into a well-structured pandas DataFrame.
+- **Graph-Based Data Structure**: Developed a node-based graph to represent players and their team associations per year, facilitating effective pathfinding strategies.
+- **Algorithmic Pathfinding**: Integrated a Breadth-First Search (BFS) algorithm to calculate the shortest path between any two NFL players.
+- **Daily Game Updates**: The game refreshes daily with a new teammate combination to guess, maintaining replayability.
+
+## Deployment
+
+The game is deployed online, accessible to users worldwide. It features a user-friendly interface and seamless interaction, offering a fresh and dynamic gaming experience every day.
+
+## Project Technicalities / Limitations
+
+- The data reflects players' end-of-year team status and doesn't cover mid-season changes, 2-way contracts, or in-season retirements.
+- This means some teammate connections might be missing for players who changed teams during the year or were on practice squads.
+
+## Scraping
+
+- Data source: `profootballreference.com`
+- Active NFL teams: Scraped from `https://www.pro-football-reference.com/teams/` under the 'Active franchises' table.
+ Html table header: 
 ```html
 <table id="teams_active" class = "sortable state_table now_sortable" data-cols-to-freeze=",1">
 ```
-### Retreiving the NFL team roster
-`https://www.pro-football-reference.com/teams/{abreviation}/{year_name}_roster.htm`
-- where `abbreviation` is the 3-letter shortened version of a team name
-- Examples:
-	- `nyg` for Giants
-	- `nyj` for Jets
-	- `nwe` for Patriots
-		- We should hardcode / precompute these / get the set of team abreviations
--  Info is in a table called `Roster`
+- Team rosters: Accessed from URLs like `https://www.pro-football-reference.com/teams/{abbreviation}/{year_name}_roster.htm`, where `{abbreviation}` is a 3-letter team code (e.g., `nyg` for Giants).
+  Info is in a table called `Roster`
 ```html
 <table id="roster" class="per_match_toggle sortable stats_table now_sortable sticky_table eq2 re2 le2"  data-cols-to-freeze=",2">
 ```
-- Sample links
-	- `https://www.pro-football-reference.com/teams/mia/2011_roster.htm`
-	- `https://www.pro-football-reference.com/teams/det/2021_roster.htm`
-### Getting the list of teams for a given year 
-- We can go to a given year, and then look at all the row team names for ranking in team offense, since all teams in the NFL will rank somewhere here 
+- Team lists for past years: accessed via the team statistics for the given year's page, for instance we can look at all the row team names for ranking in team offense, since all teams in the NFL will rank somewhere here 
 	- We can build the list in this manner 
 	- `https://www.pro-football-reference.com/years/{year_name}/#all_team_stats`
-	- Where `year_name` is a numerical value like `2014`# Project Technicalities / Limitations
-# Project Technicalities / Limitations
-- Player team data is based on the team that the player finishes the year with and does not account for mid-season trades, 2-way contracts, or retirees
-	- This means that players who started off on a given team and were traded to a new team will not have teammate connections to the team they originated on entering the year. 
-	- The same applies for 2-way players (players who come on and off the practice squad, threreby making / not making the final 53 man roster), and players who retire in-season 
+
+
+
 
