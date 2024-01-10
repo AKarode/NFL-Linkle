@@ -28,8 +28,8 @@
 	- We can build the list in this manner 
 	- `https://www.pro-football-reference.com/years/{year_name}/#all_team_stats`
 	- Where `year_name` is a numerical value like `2014`# Project Technicalities / Limitations
-- Player team data is based on the team that the player finishes the year with and does not account for mid-season trades. 
+# Project Technicalities / Limitations
+- Player team data is based on the team that the player finishes the year with and does not account for mid-season trades, 2-way contracts, or retirees
 	- This means that players who started off on a given team and were traded to a new team will not have teammate connections to the team they originated on entering the year. 
-- Players who retire in-season 
-
+	- The same applies for 2-way players (players who come on and off the practice squad, threreby making / not making the final 53 man roster), and players who retire in-season 
 
