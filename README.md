@@ -37,6 +37,7 @@ The game is deployed online, accessible to users worldwide. It features a user-f
 	- We can build the list in this manner 
 	- `https://www.pro-football-reference.com/years/{year_name}/#all_team_stats`
 # Sample Project Strucutre
+```
 NFL-Linkle/
 │
 ├── frontend/                         # Frontend React JSX files
@@ -81,7 +82,7 @@ NFL-Linkle/
 ├── .gitignore                        # Git ignore file
 ├── README.md                         # Project README
 └── ...
-
+```
 
 
 
