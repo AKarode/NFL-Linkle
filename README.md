@@ -36,6 +36,51 @@ The game is deployed online, accessible to users worldwide. It features a user-f
 - Team lists for past years: accessed via the team statistics for the given year's page, for instance we can look at all the row team names for ranking in team offense, since all teams in the NFL will rank somewhere here 
 	- We can build the list in this manner 
 	- `https://www.pro-football-reference.com/years/{year_name}/#all_team_stats`
+# Sample Project Strucutre
+NFL-Linkle/
+│
+├── frontend/                         # Frontend React JSX files
+│   ├── src/
+│   │   ├── components/               # React components
+│   │   │   ├── GameBoard.jsx         # Component for the game board
+│   │   │   ├── PlayerCard.jsx        # Component for displaying player info
+│   │   │   └── Header.jsx            # Header component
+│   │   ├── App.jsx                   # Main application component
+│   │   ├── index.jsx                 # Entry point for React application
+│   │   └── ...
+│   ├── public/
+│   │   ├── index.html                # HTML template
+│   │   └── ...
+│   ├── package.json                  # npm package file
+│   └── ...
+│
+├── backend/                          # Backend Python files
+│   ├── data_management/              # Data scraping and cleaning
+│   │   ├── scraper.py                # Script for scraping data
+│   │   ├── cleaner.py                # Script for cleaning data
+│   │   └── dataframe_setup.py        # Script for setting up DataFrame
+│   │
+│   ├── network_analysis/             # Network analysis and BFS
+│   │   ├── graph_builder.py          # Script for building graph structure
+│   │   ├── bfs_algorithm.py          # Script for Breadth-First Search algorithm
+│   │   └── network_utils.py          # Utility functions for network analysis
+│   │
+│   ├── game_logic/                   # Game logic and management
+│   │   ├── player_selector.py        # Logic for selecting players
+│   │   ├── team_logic.py             # Logic related to team data
+│   │   └── game_rules.py             # Script detailing game rules and logic
+│   │
+│   ├── api/                          # API and middleware
+│   │   ├── api_controller.py         # Controller for API endpoints
+│   │   ├── api_routes.py             # Definitions for API routes
+│   │   └── api_helpers.py            # Helper functions for API
+│   │
+│   ├── requirements.txt              # List of Python dependencies
+│   └── ...
+│
+├── .gitignore                        # Git ignore file
+├── README.md                         # Project README
+└── ...
 
 
 
