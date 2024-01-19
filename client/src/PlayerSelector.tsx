@@ -12,7 +12,7 @@ const PlayerSelector: React.FC = () => {
         // Populate with data from Web Scraper, or call from HTML
         { name: 'Tom Brady'},
         { name: 'Eli Manning'},
-        {name: 'Adit Karode'}
+        {name: 'Adit Karode'},
         {name: 'Donovan Murray'}
         // etc.
     ]);
