@@ -1,5 +1,6 @@
 import dataframe_management
 import scraper
+import pandas as pd
 
 
 def main():

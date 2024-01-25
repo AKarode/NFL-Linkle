@@ -1,12 +1,11 @@
 import time
-
+import os
 import requests
-# Disable insecure request warnings, since the website we are scraping from
-# is missing an SSL  certificate
 import urllib3
 from bs4 import BeautifulSoup
-import os
 
+# Disable insecure request warnings, since the website we are scraping from
+# is missing an SSL  certificate
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Each URL is of the form /rosters.nsf/Annual/<year>-<team_abbreviation>.html
@@ -55,7 +54,7 @@ team_abbreviations_to_team_names = {
 # after 1997)
 # It is best to start at 1997 to avoid issues like this
 # The dataset only goes until 2019
-years = [year for year in range(1997, 2020)]
+years = [year for year in range(1997, 2019)]
 
 
 def get_file_path(year, team_abbreviation):
@@ -102,7 +101,9 @@ def make_request(url):
 
 
 def download_yearly_roster_data(year, team, file_path):
-    # If we successfully created the file, write our html to it
+    # Check if the file already exists to avoid unnecessary downloads
+    if os.path.exists(file_path):
+        return
     # Get the url corresponding to the current year and team
     url = base_url.format(year, team)
     # Try to make a GET request to the URL
@@ -113,35 +114,31 @@ def download_yearly_roster_data(year, team, file_path):
         # year when that team did not exist, for example the st louis
         # rams in 2019, after they had changed cities to become Los
         # Angeles Rams
-        return
+        return  # simply return if we encounter an invalid URL
     except (requests.exceptions.TooManyRedirects,
             requests.exceptions.RequestException) as e:
         raise RuntimeError(
             f'Encountered {e} when making a URL request')
-    # Strip the web page of unnecessary information, return the relevant
-    # roster table for the given year
-    # Save the html table into a file in our yearly roster data folder
-    # Create the file with our new data
-    # Check if the file already exists to avoid unnecessary downloads
-    if not os.path.exists(file_path):
-        with open(file_path, 'w') as f:
-            roster_html = extract_roster_table_from_page(response.text)
-            print(f"Printing HTML for {year} {team}")
-            # Write a string representation of the page's HTML for the roster
-            # table
-            f.write(str(roster_html))
+
+    with open(file_path, 'w') as f:
+        # Strip the web page of unnecessary information, return the relevant
+        # roster table for the given year
+        roster_html = extract_roster_table_from_page(response.text)
+        # Save the html table into a file in our yearly roster data folder
+        # Create the file, write to it a string represenation of our data
+        f.write(str(roster_html))
 
 
 def extract_roster_table_from_page(page):
     """
     Extracts the player roster table from the given HTML page.
 
-    :param year: The year for which the MVP table is being extracted.
     :param page: HTML content of the web page.
     :return: BeautifulSoup object containing the MVP table.
     """
     soup = BeautifulSoup(page, 'html.parser')
     # Extract the specific table containing roster data
+    # The page has 2 html tables, we want the last one
     roster_table = soup.find_all('table')[-1]
     return roster_table
 
@@ -149,9 +146,6 @@ def extract_roster_table_from_page(page):
 def scrape_yearly_roster_data():
     """
     Scrapes & downloads yearly roster data and saves it into HTML files.
-
-    :param years: List of years for which MVP data is to be scraped.
-    :return: None
     """
     # Iterate through each year that we want to scrape rosters for  for
     for year in years:

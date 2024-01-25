@@ -1,5 +1,4 @@
 import pandas as pd
-
 import scraper
 
 
@@ -24,6 +23,7 @@ def load_roster_data():
                 roster_df['Team Name'] = team_name
                 # Create a new DataFrame with only the required columns
                 new_df = roster_df[['Team Name', 'Year', 'Player']]
+                print(f'Creating df for {year, team_name}')
                 dfs.append(new_df)
             except (ValueError, FileNotFoundError):
                 # If the file for a given team and year does not exist,
