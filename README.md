@@ -85,4 +85,16 @@ NFL-Linkle/
 ```
 
 
-
+Devin Tips 
+- Use a server logic for player looks up, rather than storing entrie mapping client side 
+- What we should send to the players: 
+  - Not the 50 mb FILE - THINK 100 LB WEIGHT ANALOGY 
+  - For the dropdown menu search - this is client side
+    - Send JSON {{"name": "x", "id": 0},{...},...}
+    - This allows search to work locally,
+  - To check is a player is a teammate: 
+    - but when a player name is searched and clicked, a GET request to xxxxxxx.com/api/isRelated?player1=0&player2=1
+    - This API endpoint "isRelated" can be thought of like a function that takes two integer ids and determines if one contains the other as a teammate
+    - The server gets the request and determines whether the players have played together or not (ex. {"related": true})
+    - This makes it so very little data is exchanged over the network == fast responses
+  - I'll leave the implementation logic for the search on the backend up to you, data structures too
