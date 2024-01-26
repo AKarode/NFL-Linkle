@@ -57,8 +57,9 @@ def load_roster_data():
     # Convert dictionary to JSON string
     json_data = json.dumps(teammate_map)
 
-    # Save JSON data to a file - this can be
-    player_data_path = f'../teammate_map_{scraper.years[0]}-{scraper.years[-1]}'
+    # Save JSON data to a file
+    player_data_path = f'../teammate_map_{scraper.years[0]}-' \
+                       f'{scraper.years[-1]}.json'
     with open(player_data_path, 'w') as file:
         file.write(json_data)
         file.close()
