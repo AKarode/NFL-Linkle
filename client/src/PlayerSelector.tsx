@@ -33,26 +33,28 @@ const PlayerSelector: React.FC = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <ul style={{ listStyleType: "none", textAlign: "left", padding: 0, margin: 0 }}>
-                {filteredPlayers.map((player, index) => (
-                    <li key={index} style={{ marginBottom: '8px' }}>
-                        <button 
-                            onClick={() => handlePlayerClick(player.name)}
-                            style={{ 
-                                textAlign: "left", 
-                                width: "100%", 
-                                padding: "8px", 
-                                cursor: "pointer",
-                                border: "1px solid #ccc", 
-                                borderRadius: "4px",
-                                background: "#013369"
-                            }}
-                        >
-                            {player.name}
-                        </button>
-                    </li>
-                ))}
-            </ul>
+            <div style={{ maxHeight: '300px', overflowY: 'auto', marginTop: '10px' }}>
+                <ul style={{ listStyleType: "none", textAlign: "left", padding: 0, margin: 0 }}>
+                    {filteredPlayers.map((player, index) => (
+                        <li key={index} style={{ marginBottom: '8px' }}>
+                            <button 
+                                onClick={() => handlePlayerClick(player.name)}
+                                style={{ 
+                                    textAlign: "left", 
+                                    width: "100%", 
+                                    padding: "8px", 
+                                    cursor: "pointer",
+                                    border: "1px solid #ccc", 
+                                    borderRadius: "4px",
+                                    background: "#013369"
+                                }}
+                            >
+                                {player.name}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
