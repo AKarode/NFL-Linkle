@@ -15,8 +15,8 @@ def add_all_teammate_links(roster_df: pd.DataFrame, teammate_map: dict):
     # Lambda to convert each row player name to the formatted player name
     # Apply lambda to each row and assign the result back to the 'Player' col
     roster_df["Player"] = roster_df.apply(
-        func=lambda row: f"{row['Player']} ({row['College']})"
-        , axis=1)
+        lambda row: f"{row['Player']} ({row['College']})"
+    , axis=1)
 
     # Map each player name to their teammates
     for player in roster_df["Player"]:

@@ -71,10 +71,6 @@ NFL-Linkle/
 │   │   ├── team_logic.py             # Logic related to team data
 │   │   └── game_rules.py             # Script detailing game rules and logic
 │   │
-│   ├── api/                          # API and middleware
-│   │   ├── api_controller.py         # Controller for API endpoints
-│   │   ├── api_routes.py             # Definitions for API routes
-│   │   └── api_helpers.py            # Helper functions for API
 │   │
 │   ├── requirements.txt              # List of Python dependencies
 │   └── ...

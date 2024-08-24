@@ -5,7 +5,7 @@ import urllib3
 from bs4 import BeautifulSoup
 
 # Disable insecure request warnings, since the website we are scraping from
-# is missing an SSL  certificate
+# is missing an SSL certificate
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Each URL is of the form /rosters.nsf/Annual/<year>-<team_abbreviation>.html
